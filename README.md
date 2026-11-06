@@ -69,11 +69,11 @@ npm run dev
 ### 2. Run Backend Separately
 
 ```sh
-cd api/backend
+cd backend
 npm run dev
 ```
 
-- Ensure `.env` exists in `api/backend/` (see `api/backend/.env.example`).
+- Ensure `.env` exists in `backend/` (see `backend/.env.example`).
 - Default `PORT=5000`.
 - Set `MONGO_URI=mongodb://127.0.0.1:27017/staffshift` to use MongoDB.
 
