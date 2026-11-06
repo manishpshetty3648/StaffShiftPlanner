@@ -4,8 +4,7 @@
   "description": "StaffShift Fairness - Staff rota planner with availability, inconvenient shift balance, overlap detection, and coverage analysis",
   "main": "api/backend/server.js",
   "workspaces": [
-    "frontend",
-    "api/backend"
+    "frontend"
   ],
   "scripts": {
     "start": "concurrently \"npm run start --prefix api/backend\" \"npm run preview --prefix frontend\"",
