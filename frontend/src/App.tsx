@@ -99,7 +99,7 @@ export type StaffSuggestion = {
 
 type Notice = { kind: 'success' | 'error' | 'info'; text: string }
 
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:5000/api'
+const API_URL = import.meta.env.VITE_API_URL;
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 const WEEKDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 const COLORS = ['#7b66e8', '#e58a53', '#48a88b', '#d26383', '#5791cf', '#c19a49', '#9b59b6', '#3498db']
