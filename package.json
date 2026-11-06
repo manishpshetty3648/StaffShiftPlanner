@@ -2,14 +2,18 @@
   "name": "staffshiftplanner",
   "version": "1.0.0",
   "description": "StaffShift Fairness - Staff rota planner with availability, inconvenient shift balance, overlap detection, and coverage analysis",
-  "main": "backend/server.js",
+  "main": "api/backend/server.js",
+  "workspaces": [
+    "frontend",
+    "api/backend"
+  ],
   "scripts": {
-    "start": "concurrently \"npm run start --prefix backend\" \"npm run preview --prefix frontend\"",
-    "dev": "concurrently -n \"api,web\" -c \"blue,green\" \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
-    "dev:backend": "npm run dev --prefix backend",
+    "start": "concurrently \"npm run start --prefix api/backend\" \"npm run preview --prefix frontend\"",
+    "dev": "concurrently -n \"api,web\" -c \"blue,green\" \"npm run dev --prefix api/backend\" \"npm run dev --prefix frontend\"",
+    "dev:backend": "npm run dev --prefix api/backend",
     "dev:frontend": "npm run dev --prefix frontend",
     "build": "npm run build --prefix frontend",
-    "test": "npm run test --prefix backend"
+    "test": "npm run test --prefix api/backend"
   },
   "keywords": [
     "shift-planner",

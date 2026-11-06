@@ -69,12 +69,11 @@ npm run dev
 ### 2. Run Backend Separately
 
 ```sh
-cd backend
-npm install
+cd api/backend
 npm run dev
 ```
 
-- Ensure `.env` exists in `backend/` (see `backend/.env.example`).
+- Ensure `.env` exists in `api/backend/` (see `api/backend/.env.example`).
 - Default `PORT=5000`.
 - Set `MONGO_URI=mongodb://127.0.0.1:27017/staffshift` to use MongoDB.
 
@@ -82,12 +81,12 @@ npm run dev
 
 ```sh
 cd frontend
-npm install
 npm run dev
 ```
 
 - Frontend listens on `http://localhost:5173`.
-- Set `VITE_API_URL` if connecting to a custom backend address.
+- The Vite development server proxies `/api` requests to `http://localhost:5000`.
+- Set `VITE_API_URL` to an absolute API URL only when using a separate backend host.
 
 ### 4. Run Automated Tests
 
@@ -96,6 +95,15 @@ npm test
 ```
 
 Verifies health, data seeding, staff CRUD, shift scheduling, overlap prevention (409 Conflict), smart suggester ranking, and operating hours coverage analysis.
+
+## Deploy to Vercel
+
+1. Import this repository into Vercel with the repository root as the project root.
+2. Keep the build command as `npm run build --prefix frontend` and the output directory as `frontend/dist`. The included `vercel.json` routes `/api/*` to the Express function and serves the frontend.
+3. Add `MONGO_URI` as a Vercel environment variable for Production (and Preview if needed). Use a MongoDB database reachable from Vercel; local file storage is not persistent in serverless deployments.
+4. Deploy. The frontend calls `/api` on the same Vercel deployment, so `VITE_API_URL` is not required.
+
+Do not commit `.env` files or planner data. Configure secrets in Vercel's project environment-variable settings.
 
 ---
 
