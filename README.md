@@ -59,6 +59,9 @@ You can install dependencies and run both frontend and backend concurrently with
 # Install root dependencies
 npm install
 
+# Install dependencies for the standalone backend
+npm install --prefix api/backend
+
 # Start both backend (port 5000) and frontend (Vite) concurrently
 npm run dev
 ```
@@ -95,6 +98,12 @@ npm test
 ```
 
 Verifies health, data seeding, staff CRUD, shift scheduling, overlap prevention (409 Conflict), smart suggester ranking, and operating hours coverage analysis.
+
+## Deploy to Netlify
+
+The included `netlify.toml` runs `npm run build` from the repository root and publishes `frontend/dist`, the Vite frontend's output directory. This overrides the site's previous `public` publish directory. The frontend is the sole npm workspace so Netlify can select it automatically; the backend is a standalone package.
+
+This configuration deploys the frontend only. The Express API is not configured as a Netlify Function; to use a separately hosted backend, set `VITE_API_URL` to its absolute API URL before deploying.
 
 ## Deploy to Vercel
 
